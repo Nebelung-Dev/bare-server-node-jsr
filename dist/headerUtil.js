@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.flattenHeader = exports.mapHeadersFromArray = exports.rawHeaderNames = exports.objectFromRawHeaders = void 0;
 function objectFromRawHeaders(raw) {
     const result = Object.create(null);
     for (let i = 0; i < raw.length; i += 2) {
@@ -17,7 +15,6 @@ function objectFromRawHeaders(raw) {
     }
     return result;
 }
-exports.objectFromRawHeaders = objectFromRawHeaders;
 function rawHeaderNames(raw) {
     const result = [];
     for (let i = 0; i < raw.length; i += 2) {
@@ -26,7 +23,6 @@ function rawHeaderNames(raw) {
     }
     return result;
 }
-exports.rawHeaderNames = rawHeaderNames;
 function mapHeadersFromArray(from, to) {
     for (const header of from) {
         if (header.toLowerCase() in to) {
@@ -37,12 +33,11 @@ function mapHeadersFromArray(from, to) {
     }
     return to;
 }
-exports.mapHeadersFromArray = mapHeadersFromArray;
 /**
  * Converts a header into an HTTP-ready comma joined header.
  */
 function flattenHeader(value) {
     return Array.isArray(value) ? value.join(', ') : value;
 }
-exports.flattenHeader = flattenHeader;
-//# sourceMappingURL=headerUtil.js.map
+
+export { flattenHeader, mapHeadersFromArray, rawHeaderNames, objectFromRawHeaders };

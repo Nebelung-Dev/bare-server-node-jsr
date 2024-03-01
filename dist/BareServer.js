@@ -1,14 +1,9 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.json = exports.pkg = exports.BareError = void 0;
-const node_events_1 = __importDefault(require("node:events"));
-const node_fs_1 = require("node:fs");
-const node_path_1 = require("node:path");
-const http_errors_1 = __importDefault(require("http-errors"));
-const AbstractMessage_js_1 = require("./AbstractMessage.js");
+import node_events_1 from "node:events";
+import node_fs_1 from "node:fs";
+import node_path_1 from "node:path";
+import http_errors_1 from "http-errors";
+import AbstractMessage_js_1 from "./AbstractMessage.js";
 class BareError extends Error {
     status;
     body;
@@ -18,13 +13,12 @@ class BareError extends Error {
         this.body = body;
     }
 }
-exports.BareError = BareError;
-exports.pkg = JSON.parse((0, node_fs_1.readFileSync)((0, node_path_1.join)(__dirname, '..', 'package.json'), 'utf-8'));
+const pkg = JSON.parse((0, node_fs_1.readFileSync)((0, node_path_1.join)(__dirname, '..', 'package.json'), 'utf-8'));
 const project = {
     name: 'bare-server-node',
     description: 'TOMPHTTP NodeJS Bare Server',
     repository: 'https://github.com/tomphttp/bare-server-node',
-    version: exports.pkg.version,
+    version: pkg.version,
 };
 function json(status, json) {
     const send = Buffer.from(JSON.stringify(json, null, '\t'));
@@ -36,7 +30,6 @@ function json(status, json) {
         },
     });
 }
-exports.json = json;
 class Server extends node_events_1.default {
     routes = new Map();
     socketRoutes = new Map();
@@ -164,5 +157,5 @@ class Server extends node_events_1.default {
         (0, AbstractMessage_js_1.writeResponse)(response, res);
     }
 }
-exports.default = Server;
-//# sourceMappingURL=BareServer.js.map
+
+export { json, pkg, BareError };

@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.cleanupDatabase = exports.JSONDatabaseAdapter = void 0;
 /**
  * @internal
  */
@@ -29,7 +27,6 @@ class JSONDatabaseAdapter {
         }
     }
 }
-exports.JSONDatabaseAdapter = JSONDatabaseAdapter;
 /**
  * Routine
  */
@@ -39,5 +36,5 @@ async function cleanupDatabase(database) {
         if (expires < Date.now())
             database.delete(id);
 }
-exports.cleanupDatabase = cleanupDatabase;
-//# sourceMappingURL=Meta.js.map
+
+export { cleanupDatabase, JSONDatabaseAdapter };

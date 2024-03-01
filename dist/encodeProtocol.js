@@ -1,6 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.decodeProtocol = exports.encodeProtocol = exports.validProtocol = void 0;
 const validChars = "!#$%&'*+-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ^_`abcdefghijklmnopqrstuvwxyz|~";
 const reserveChar = '%';
 function validProtocol(protocol) {
@@ -12,7 +10,6 @@ function validProtocol(protocol) {
     }
     return true;
 }
-exports.validProtocol = validProtocol;
 function encodeProtocol(protocol) {
     let result = '';
     for (let i = 0; i < protocol.length; i++) {
@@ -27,7 +24,6 @@ function encodeProtocol(protocol) {
     }
     return result;
 }
-exports.encodeProtocol = encodeProtocol;
 function decodeProtocol(protocol) {
     let result = '';
     for (let i = 0; i < protocol.length; i++) {
@@ -44,5 +40,5 @@ function decodeProtocol(protocol) {
     }
     return result;
 }
-exports.decodeProtocol = decodeProtocol;
-//# sourceMappingURL=encodeProtocol.js.map
+
+export { decodeProtocol, encodeProtocol, validProtocol };

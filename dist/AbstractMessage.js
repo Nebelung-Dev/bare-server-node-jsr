@@ -1,8 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeResponse = exports.Response = exports.Request = void 0;
-const node_stream_1 = require("node:stream");
-const headers_polyfill_1 = require("headers-polyfill");
+import node_stream_1 from "node:stream";
+import headers_polyfill_1 from "headers-polyfill";
 /**
  * Abstraction for the data read from IncomingMessage
  */
@@ -19,7 +17,6 @@ class Request {
         this.url = new URL(init.path, 'http://bare-server-node');
     }
 }
-exports.Request = Request;
 class Response {
     body;
     status;
@@ -41,7 +38,6 @@ class Response {
         this.headers = new headers_polyfill_1.Headers(init.headers);
     }
 }
-exports.Response = Response;
 function writeResponse(response, res) {
     for (const [header, value] of response.headers)
         res.setHeader(header, value);
@@ -57,5 +53,5 @@ function writeResponse(response, res) {
         res.end();
     return true;
 }
-exports.writeResponse = writeResponse;
-//# sourceMappingURL=AbstractMessage.js.map
+
+export { writeResponse, Response, Request };

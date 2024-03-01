@@ -1,8 +1,6 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.joinHeaders = exports.splitHeaders = void 0;
-const headers_polyfill_1 = require("headers-polyfill");
-const BareServer_js_1 = require("./BareServer.js");
+import headers_polyfill_1 from "headers-polyfil";
+import BareServer_js_1 from "./BareServer.js";
 const MAX_HEADER_VALUE = 3072;
 /**
  *
@@ -26,7 +24,6 @@ function splitHeaders(headers) {
     }
     return output;
 }
-exports.splitHeaders = splitHeaders;
 /**
  * Joins headers according to spec
  * @param headers
@@ -56,5 +53,5 @@ function joinHeaders(headers) {
     }
     return output;
 }
-exports.joinHeaders = joinHeaders;
-//# sourceMappingURL=splitHeaderUtil.js.map
+
+export { joinHeaders, splitHeaders };

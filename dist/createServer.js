@@ -1,20 +1,15 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createBareServer = exports.toAddressArray = exports.validIPFamily = void 0;
-const node_dns_1 = require("node:dns");
-const node_http_1 = require("node:http");
-const node_https_1 = require("node:https");
-const ipaddr_js_1 = require("ipaddr.js");
-const ws_1 = require("ws");
-const BareServer_js_1 = __importDefault(require("./BareServer.js"));
-const Meta_js_1 = require("./Meta.js");
-const V1_js_1 = __importDefault(require("./V1.js"));
-const V2_js_1 = __importDefault(require("./V2.js"));
-const V3_js_1 = __importDefault(require("./V3.js"));
-exports.validIPFamily = [0, 4, 6];
+import node_dns_1 from "node:dns";
+import node_http_1 from "node:http";
+import node_https_1 from "node:https";
+import ipaddr_js_1 from "ipaddr.js";
+import ws_1 from "ws";
+import BareServer_js_1 from "./BareServer.js";
+import Meta_js_1 from "./Meta.js";
+import V1_js_1 from "./V1.js";
+import V2_js_1 from "./V2.js";
+import V3_js_1 from "./V3.js";
+const validIPFamily = [0, 4, 6];
 /**
  * Converts the address and family of a DNS lookup callback into an array if it wasn't already
  */
@@ -29,7 +24,6 @@ function toAddressArray(address, family) {
     else
         return address;
 }
-exports.toAddressArray = toAddressArray;
 /**
  * Create a Bare server.
  * This will handle all lifecycles for unspecified options (httpAgent, httpsAgent, metaMap).
@@ -41,7 +35,7 @@ function createBareServer(directory, init = {}) {
         throw new RangeError('Directory must start and end with /');
     init.logErrors ??= false;
     const cleanup = [];
-    if (typeof init.family === 'number' && !exports.validIPFamily.includes(init.family))
+    if (typeof init.family === 'number' && !validIPFamily.includes(init.family))
         throw new RangeError('init.family must be one of: 0, 4, 6');
     if (init.blockLocal ?? true) {
         init.filterRemote ??= (url) => {
@@ -95,5 +89,4 @@ function createBareServer(directory, init = {}) {
     });
     return server;
 }
-exports.createBareServer = createBareServer;
-//# sourceMappingURL=createServer.js.map
+export { createBareServer, toAddressArray, validIPFamily };

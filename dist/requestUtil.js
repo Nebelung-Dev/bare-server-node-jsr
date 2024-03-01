@@ -1,14 +1,9 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.webSocketFetch = exports.upgradeFetch = exports.fetch = exports.randomHex = void 0;
-const node_crypto_1 = require("node:crypto");
-const node_http_1 = require("node:http");
-const node_https_1 = require("node:https");
-const ws_1 = __importDefault(require("ws"));
-const BareServer_js_1 = require("./BareServer.js");
+import node_crypto_1 from "node:crypto";
+import node_http_1 from "node:http";
+import node_https_1 from "node:https";
+import ws_1 from "ws";
+import BareServer_js_1 from "./BareServer.js";
 function randomHex(byteLength) {
     const bytes = new Uint8Array(byteLength);
     (0, node_crypto_1.getRandomValues)(bytes);
@@ -17,7 +12,6 @@ function randomHex(byteLength) {
         hex += byte.toString(16).padStart(2, '0');
     return hex;
 }
-exports.randomHex = randomHex;
 function outgoingError(error) {
     if (error instanceof Error) {
         switch (error.code) {
@@ -90,7 +84,6 @@ async function fetch(request, signal, requestHeaders, remote, options) {
         });
     });
 }
-exports.fetch = fetch;
 async function upgradeFetch(request, signal, requestHeaders, remote, options) {
     if (options.filterRemote)
         await options.filterRemote(remote);
@@ -134,7 +127,6 @@ async function upgradeFetch(request, signal, requestHeaders, remote, options) {
         });
     });
 }
-exports.upgradeFetch = upgradeFetch;
 async function webSocketFetch(request, requestHeaders, remote, protocols, options) {
     if (options.filterRemote)
         await options.filterRemote(remote);
@@ -181,5 +173,5 @@ async function webSocketFetch(request, requestHeaders, remote, protocols, option
         outgoing.addEventListener('error', errorListener);
     });
 }
-exports.webSocketFetch = webSocketFetch;
-//# sourceMappingURL=requestUtil.js.map
+
+export { webSocketFetch, upgradeFetch, fetch, randomHex };

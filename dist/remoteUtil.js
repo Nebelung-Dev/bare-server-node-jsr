@@ -2,12 +2,9 @@
 /*
  * Utilities for converting remotes to URLs
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.urlToRemote = exports.resolvePort = exports.remoteToURL = void 0;
 function remoteToURL(remote) {
     return new URL(`${remote.protocol}${remote.host}:${remote.port}${remote.path}`);
 }
-exports.remoteToURL = remoteToURL;
 function resolvePort(url) {
     if (url.port)
         return Number(url.port);
@@ -23,7 +20,6 @@ function resolvePort(url) {
             return 0;
     }
 }
-exports.resolvePort = resolvePort;
 function urlToRemote(url) {
     return {
         protocol: url.protocol,
@@ -32,5 +28,5 @@ function urlToRemote(url) {
         path: url.pathname + url.search,
     };
 }
-exports.urlToRemote = urlToRemote;
-//# sourceMappingURL=remoteUtil.js.map
+
+export { urlToRemote, resolvePort, remoteToURL };

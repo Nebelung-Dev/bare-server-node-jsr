@@ -1,12 +1,11 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const headers_polyfill_1 = require("headers-polyfill");
-const AbstractMessage_js_1 = require("./AbstractMessage.js");
-const BareServer_js_1 = require("./BareServer.js");
-const headerUtil_js_1 = require("./headerUtil.js");
-const remoteUtil_js_1 = require("./remoteUtil.js");
-const requestUtil_js_1 = require("./requestUtil.js");
-const splitHeaderUtil_js_1 = require("./splitHeaderUtil.js");
+import headers_polyfill_1 from "headers-polyfill";
+import AbstractMessage_js_1 from "./AbstractMessage.js";
+import BareServer_js_1 from "./BareServer.js";
+import headerUtil_js_1 from "./headerUtil.js";
+import remoteUtil_js_1 from "./remoteUtil.js";
+import requestUtil_js_1 from "./requestUtil.js";
+import splitHeaderUtil_js_1 from "./splitHeaderUtil.js";
 const forbiddenForwardHeaders = [
     'connection',
     'transfer-encoding',
@@ -301,5 +300,5 @@ function registerV3(server) {
     server.socketRoutes.set('/v3/', tunnelSocket);
     server.versions.push('v3');
 }
-exports.default = registerV3;
-//# sourceMappingURL=V3.js.map
+
+export default registerV3;
