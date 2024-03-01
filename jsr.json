@@ -1,0 +1,5 @@
+{
+  "name": "@tomphttp/bare-server-node",
+  "version": "2.0.1",
+  "exports": "./dist/createServer.d.ts"
+}
